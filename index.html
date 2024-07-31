@@ -4,216 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/icon.png">
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">
-            <h1>APPLE</h1>
+    <div class="container">
+        <div class="player category">
+            <button class="clickCategory" data="Classic">Classic</button>
+            <button class="clickCategory" data="Jazz">Jazz</button>
+            <button class="clickCategory" data="Rabis">Rabis</button>
+            <button class="clickCategory" data="Rap">Rap</button>
+            <button class="clickCategory" data="Rock">Rock</button>
         </div>
-        <div class="icons">
-            <i class="fas fa-shopping-bag openBasket"></i>
-            <i class="fa fa-heart"></i>
-            <i class="fa fa-credit-card"></i>
-        </div>
-    </header>
-    <nav>
-        <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Supplies</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-    <nav class="scrollNav">
-        <ul class="menu">
-            <li style="--list:1"><a href="#">Home</a></li>
-            <li style="--list:2"><a href="#">Menu</a></li>
-            <li style="--list:3"><a href="#">Supplies</a></li>
-            <li style="--list:4"><a href="#">About</a></li>
-            <li style="--list:5"><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="contProducts">
-        <!-- <div class="itemProducts">
-            <img src="img/1.png" alt="" class="prodImg">
-            <div class="name-price-prod">
-                <h2>iPhone 12 Pro Max</h2>
-                <h3>400$</h3>
-            </div>
-            <div class="icons-add">
-                <i class="fa fa-cart-plus"></i>
-                <i class="fa fa-heart"></i>
-            </div>
-        </div> -->
-    </div>
-
-    <div class="basket">
-        <!-- <button class="closeBasket">X</button> -->
-        <div class="infoBasket">
-            <p> Total: <span class="total">0</span></p>
-            <p> Count: <span class="count">0</span></p>
-        </div>
-        <div class="contBasket">
-            <!-- <div>
-                <img src="img/1.png" alt="">
-                <h2>iPhone 14 Pro Max</h2>
-                <h3>1400 $</h3>
-                <div id="iconsButton">
-                    <i class="fa fa-trash" style="color: rgb(78, 7, 7);"></i>
-                    <p>1</p>
-                    <i class="fa fa-plus co" style="color: rgb(2, 102, 2);"></i>
+        <div class="player audioplayer">
+            <div class="overflow">
+                <audio src="" id="audio"></audio>
+                <div class="title">
+                    <h2 class="nameSong">dvgsfd</h2>
+                    <h3 class="nameSinger">fvdxfv</h3>
+                    <h4 class="nameCategory">efwe</h4>
                 </div>
+                <div class="cont-time">
+                    <p class="song-time">00:00</p>
+                    <input type="range" class="song-range" value="0" max="100">
+                    <p class="song-duration">00:00</p>
+                </div>
+                <img src="images/indila.jpg" alt="" class="img-singer">
+                <div class="menu-bar">
+                    <i class="fa fa-undo undoSecond"></i>
+                    <i class="fa fa-backward prev"></i>
+                    <i class="fa fa-play play-pause"></i>
+                    <i class="fa fa-forward next"></i>
+                    <i class="fa fa-repeat undoFirst"></i>
+                </div>
+                <div class="speeds">
+                    <button class="buttonsSpeed"><span class="speed">0.25</span>x</button>
+                    <button class="buttonsSpeed"><span class="speed">0.5</span>x</button>
+                    <button class="buttonsSpeed"><span class="speed">1</span>x</button>
+                    <button class="buttonsSpeed"><span class="speed">1.5</span>x</button>
+                    <button class="buttonsSpeed"><span class="speed">2</span>x</button>
+                </div>
+                <div class="down">
+                    <div class="cont-volume">
+                        <i class="fa fa-volume-up"></i>
+                        <input type="range" class="audio-volume" value="50" max="100">
+                        <span class="percent">50%</span>
+                    </div>
+                    <div class="repeat">
+                        <button class="startRepeat">A</button>
+                        <button class="endRepeat">B</button>
+                        <button class="offRepeat">Off</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="player songs">
+            <!-- <div>
+                <img src="images/bethowen.jpg" alt="">
+                <h2>Bethowen</h2>
+                <h3>Moonlight Sonata</h3>
             </div> -->
         </div>
     </div>
-
-    <!-- <div class="contMoney">
-        <div class="topMoney">
-            <p>Balance : <span class="money">0</span></p>
-            <p>Total : <span class="grandTotal">0</span></p>
-        </div>
-        <div class="pay">
-            <div class="topPay">
-                <p>PAY WITH MASTER/VISA CARD</p>
-                <div class="mastervisa">
-                </div>
-                <span>FILL IN THE GIVEN FIELDS</span>
-            </div>
-            <div class="form">
-                <div class="name-surname">
-                    <span><input class="nameA" type="text" placeholder="Name"><img src="img/close.jpg" alt=""
-                            class="nameImg"></span>
-                    <span><input class="Surname" type="text" placeholder="Surname"><img src="img/close.jpg" alt=""
-                            class="surnameImg"></span>
-                </div>
-                <span><input class="number-cart" type="text" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="19">
-                    <img src="img/close.jpg" alt="" class="cartImg"></span>
-                <span><input class="month-year" type="text" placeholder="08/23" maxlength="5"><img
-                        src="img/close.jpg" alt="" class="dateImg"></span>
-                <span><input class="cvv" type="text" placeholder="123" maxlength="3"><img src="img/close.jpg" alt=""
-                        class="cvvImg"></span>
-                <div class="phoneNumber">
-                    <span><input type="tel" placeholder="+374" class="telnumber" maxlength="4"></span>
-                    <span><input type="tel" placeholder="96" class="tel" maxlength="2"></span>
-                    <span><input type="tel" placeholder="XX" class="tel" maxlength="2"></span>
-                    <span><input type="tel" placeholder="XX" class="tel" maxlength="2"></span>
-                    <span><input type="tel" placeholder="XX" class="tel" maxlength="2"><img src="img/close.jpg"
-                            alt="" class="telImg"></span>
-                </div>
-                <button class="payButton">Pay</button>
-            </div>
-        </div>
-
-
-    </div> -->
-
-
-
-
-
-    <!-- ------------------------------------------------------------------------------- -->
-    <!-- 
-    <div class="about">
-        <div class="creators">
-            <h2>Founders</h2>
-            <div class="infoP">
-                <div class="founder one">
-                    <img src="img/f1.jpg" alt="" class="imgF">
-                    <p>Stephen Gary Wozniak (/ˈwɒzniæk/; born August 11, 1950), also known by his nickname "Woz", is an
-                        American technology entrepreneur, electronics engineer, computer scientist, computer programmer,
-                        philanthropist, and inventor. In 1976, he co-founded Apple Computer with his late business
-                        partner Steve Jobs, which later became the world's largest technology company by revenue and the
-                        largest company in the world by market capitalization. Through his work at Apple in the 1970s
-                        and 1980s, he is widely recognized as one of the most prominent pioneers of the personal
-                        computer revolution.[4]
-
-                        In 1975, Wozniak started developing the Apple I[5]: 150  into the computer that launched Apple
-                        when he and Jobs first began marketing it the following year. He primarily designed the Apple
-                        II, introduced in 1977, known as one of the first highly successful mass-produced
-                        microcomputers,[6] while Jobs oversaw the development of its foam-molded plastic case and early
-                        Apple employee Rod Holt developed its switching power supply.[7] With human–computer interface
-                        expert Jef Raskin, Wozniak had a major influence over the initial development of the original
-                        Apple Macintosh concepts from 1979 to 1981, when Jobs took over the project following Wozniak's
-                        brief departure from the company due to a traumatic airplane accident.[8][3] After permanently
-                        leaving Apple in 1985, Wozniak founded CL 9 and created the first programmable universal remote,
-                        released in 1987. He then pursued several other businesses and philanthropic ventures throughout
-                        his career, focusing largely on technology in K–12 schools.[3]
-
-                        As of February 2020, Wozniak has remained an employee of Apple in a ceremonial capacity since
-                        stepping down in 1985.[9][10] In recent years, he has helped fund multiple entrepreneurial
-                        efforts dealing in areas such as GPS and telecommunications, flash memory, technology and pop
-                        culture conventions, technical education, ecology, satellites and more.</p>
-                </div>
-                <div class="founder two">
-                    <p>Steven Paul Jobs (February 24, 1955 – October 5, 2011) was an American business magnate,
-                        inventor, and investor. He was the co-founder, chairman, and CEO of Apple; the chairman and
-                        majority shareholder of Pixar; a member of The Walt Disney Company's board of directors
-                        following its acquisition of Pixar; and the founder, chairman, and CEO of NeXT. He was a pioneer
-                        of the personal computer revolution of the 1970s and 1980s, along with his early business
-                        partner and fellow Apple co-founder Steve Wozniak.
-
-                        Jobs was born in San Francisco to a Syrian father and German-American mother. He was adopted
-                        shortly after his birth. Jobs attended Reed College in 1972 before withdrawing that same year.
-                        In 1974, he traveled through India seeking enlightenment before later studying Zen Buddhism. He
-                        and Wozniak co-founded Apple in 1976 to sell Wozniak's Apple I personal computer. Together the
-                        duo gained fame and wealth a year later with production and sale of the Apple II, one of the
-                        first highly successful mass-produced microcomputers. Jobs saw the commercial potential of the
-                        Xerox Alto in 1979, which was mouse-driven and had a graphical user interface (GUI). This led to
-                        the development of the unsuccessful Apple Lisa in 1983, followed by the breakthrough Macintosh
-                        in 1984, the first mass-produced computer with a GUI. The Macintosh introduced the desktop
-                        publishing industry in 1985 with the addition of the Apple LaserWriter, the first laser printer
-                        to feature vector graphics.</p>
-                    <img src="img/f2.jpg" alt="" class="imgF">
-                </div>
-                <div class="founder three">
-                    <img src="img/f3.jpg" alt="" class="imgF">
-                    <p>Ronald Gerald Wayne (born May 17, 1934) is an American former businessman and electronics
-                        industry pioneer. On April 1, 1976, Wayne, along with Steve Wozniak and Steve Jobs, drafted an
-                        original contractual partnership agreement, creating the Apple Computer Company (now Apple
-                        Inc.). Selected by Jobs, Wayne was included as a (10%) owner to arbitrate any disputes that
-                        might arise between Jobs (45%) and Wozniak (45%). His vital set of complementary skills as a
-                        technical writer, model builder, draftsman, and expert documentation system developer proved to
-                        be a perfect dovetail match for the partnership.[citation needed] In addition to providing
-                        administrative oversight and guidance for the fledgling venture, Wayne was instrumental at the
-                        outset in establishing the proprietary nature of Apple products. As soon as Wayne successfully
-                        persuaded Wozniak on this pivotal decision, the partnership was formed.Although he fully
-                        supported the venture, Wayne elected to formally separate himself from this partnership just 12
-                        days after it began. He went on to develop a new line of electronic slot machines replacing the
-                        mechanical models of that period. Wayne relinquished his (10%) share of the partnership back to
-                        Jobs and Wozniak for $800 (equivalent to $4,114 in 2022), and one year later accepted a final
-                        payment of $1,500 (equivalent to $7,714 in 2022) to forfeit any potential future claims he might
-                        assert against the newly incorporated Apple.[[</p>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="history">
-            <h2>iPhone's History</h2>
-            <div class="slide-show">
-                <img src="img/i1.png" alt="">
-                <img src="img/i2.png" alt="">
-                <img src="img/i3.png" alt="">
-                <img src="img/i4.png" alt="">
-                <img src="img/i5.png" alt="">
-                <img src="img/i6.png" alt="">
-                <img src="img/i7.png" alt="">
-                <img src="img/i8.png" alt="">
-                <img src="img/i9.png" alt="">
-                <img src="img/i10.png" alt="">
-                <img src="img/i11.png" alt="">
-                <img src="img/i12.png" alt="">
-                <img src="img/i13.png" alt="">
-                <img src="img/i14.png" alt="">
-                <img src="img/i15.png" alt="">
-            </div>
-        </div>
-    </div> -->
 
 
 

@@ -1,415 +1,520 @@
-let header = document.querySelector('header');
-let scrollNav = document.querySelectorAll('.scrollNav li');
-window.onscroll = () => {
-    if (scrollY > 200) {
-        header.style.background = 'rgb(8, 8, 24)';
-        scrollNav.forEach(list => {
-            list.style.transform = 'rotate(-90deg) translateX(0%)'
-        })
-    }
-    else {
-        header.style.background = 'transparent';
-        scrollNav.forEach(list => {
-            list.style.transform = 'rotate(-90deg) translateX(-1000%)'
-        })
-    }
-}
+let audio = document.querySelector('#audio');
+let nameSong = document.querySelector('.nameSong');
+let nameSinger = document.querySelector('.nameSinger');
+let nameCategory = document.querySelector('.nameCategory');
+let songTime = document.querySelector('.song-time');
+let songRange = document.querySelector('.song-range');
+let songDuration = document.querySelector('.song-duration');
+let imgSinger = document.querySelector('.img-singer');
+let undoSecond = document.querySelector('.undoSecond');
+let prev = document.querySelector('.prev');
+let playPause = document.querySelector('.play-pause');
+let next = document.querySelector('.next');
+let undoFirst = document.querySelector('.undoFirst');
+let buttonsSpeed = document.querySelectorAll('.buttonsSpeed');
+let audioVolume = document.querySelector('.audio-volume');
+let percent = document.querySelector('.percent');
+let startRepeat = document.querySelector('.startRepeat');
+let endRepeat = document.querySelector('.endRepeat');
+let offRepeat = document.querySelector('.offRepeat');
+let audioplayer = document.querySelector('.audioplayer');
+let songPlaying = false;
+let songs = document.querySelector('.songs');
+let clickCategory = document.querySelectorAll('.clickCategory');
 
 
-let products = [
+let songList = [
     {
-        picture: 'img/1.png',
-        name: 'iPhone 14 Pro Max',
-        price: '1400 $',
-        category: 'phone',
-        data: 1400
+        picture: 'images/1.webp',
+        song: 'audio/rock/Arctic Monkeys - 505.mp3',
+        name: '505',
+        singer: 'Arctic Monkeys',
+        category: 'Rock'
     },
     {
-        picture: 'img/2.png',
-        name: 'iPhone 12 Mini',
-        price: '350 $',
-        category: 'phone',
-        data: 350
+        picture: 'images/1.webp',
+        song: 'audio/rock/Arctic Monkeys - Arabella.mp3',
+        name: 'Arabella',
+        singer: 'Arctic Monkeys',
+        category: 'Rock'
     },
     {
-        picture: 'img/3.png',
-        name: 'iPhone 12',
-        price: '550 $',
-        category: 'phone',
-        data: 550
+        picture: 'images/1.webp',
+        song: 'audio/rock/Arctic Monkeys - Do I Wanna Know.mp3',
+        name: 'Do I Wanna Know',
+        singer: 'Arctic Monkeys',
+        category: 'Rock'
     },
     {
-        picture: 'img/4.png',
-        name: 'iPhone 14 Pro Max',
-        price: '1500 $',
-        category: 'phone',
-        data: 1500
+        picture: 'images/1.webp',
+        song: 'audio/rock/Arctic Monkeys - Fireside.mp3',
+        name: 'Fireside',
+        singer: 'Arctic Monkeys',
+        category: 'Rock'
     },
     {
-        picture: 'img/5.png',
-        name: 'iPhone 11',
-        price: '500 $',
-        category: 'phone',
-        data: 500
+        picture: 'images/1.webp',
+        song: 'audio/rock/Arctic Monkeys - I Wanna Be Yours.mp3',
+        name: 'I Wanna Be Yours',
+        singer: 'Arctic Monkeys',
+        category: 'Rock'
     },
     {
-        picture: 'img/6.png',
-        name: 'Apple Watch s7',
-        price: '750 $',
-        category: 'watch',
-        data: 750
+        picture: 'images/1.webp',
+        song: 'audio/rock/Arctic Monkeys - Knee Socks.mp3',
+        name: 'Knee Socks',
+        singer: 'Arctic Monkeys',
+        category: 'Rock'
     },
     {
-        picture: 'img/7.png',
-        name: 'Apple Watch s7',
-        price: '750 $',
-        category: 'watch',
-        data: 750
+        picture: 'images/1.webp',
+        song: 'audio/rock/Arctic Monkeys - One For The Road.mp3',
+        name: 'One For The Road',
+        singer: 'Arctic Monkeys',
+        category: 'Rock'
     },
     {
-        picture: 'img/8.png',
-        name: 'Apple Watch s6',
-        price: '750 $',
-        category: 'watch',
-        data: 750
+        picture: 'images/1.webp',
+        song: 'audio/rock/Arctic Monkeys - R U Mine.mp3',
+        name: 'R U Mine',
+        singer: 'Arctic Monkeys',
+        category: 'Rock'
     },
     {
-        picture: 'img/9.png',
-        name: 'Mac Book Air 15',
-        price: '1300 $',
-        category: 'macbook',
-        data: 1300
+        picture: 'images/1.webp',
+        song: 'audio/rock/Arctic Monkeys - Snap Out Of It.mp3',
+        name: 'Snap Out Of It',
+        singer: 'Arctic Monkeys',
+        category: 'Rock'
     },
     {
-        picture: 'img/10.png',
-        name: 'Mac Book Air 15',
-        price: '1300 $',
-        category: 'macbook',
-        data: 1300
+        picture: 'images/1.webp',
+        song: 'audio/rock/Arctic Monkeys - Whyd You Only Call Me When Youre High.mp3',
+        name: 'Whyd You Only Call Me When Youre High',
+        singer: 'Arctic Monkeys',
+        category: 'Rock'
     },
     {
-        picture: 'img/11.png',
-        name: 'Mac Book Pro 16',
-        price: '3000 $',
-        category: 'macbook',
-        data: 3000
+        picture: 'images/bethowen.jpg',
+        song: 'audio/classic/betkhoven-koncert-dlja-fortepiano-5-allegro.mp3',
+        name: 'fortepiano-5-allegro',
+        singer: 'Bethoven',
+        category: 'Classic'
     },
     {
-        picture: 'img/12.png',
-        name: 'Apple AirPods Pro',
-        price: '350 $',
-        category: 'airpods',
-        data: 350
+        picture: 'images/bethowen.jpg',
+        song: 'audio/classic/betkhoven-lunnaja-sonata (1).mp3',
+        name: 'lunnaja-sonata',
+        singer: 'Bethoven',
+        category: 'Classic'
     },
     {
-        picture: 'img/13.png',
-        name: 'Apple AirPods Max',
-        price: '550 $',
-        category: 'airpods',
-        data: 550
+        picture: 'images/chaykovski.webp',
+        song: 'audio/classic/chajjkovskijj-allegro-non-troppo.mp3',
+        name: 'allegro-non-troppo',
+        singer: 'Chaykovski',
+        category: 'Classic'
     },
     {
-        picture: 'img/14.png',
-        name: 'Apple AirPods Max',
-        price: '550 $',
-        category: 'airpods',
-        data: 550
+        picture: 'images/chaykovski.webp',
+        song: 'audio/classic/chajjkovskijj-barcarole.mp3',
+        name: 'barcarole',
+        singer: 'Chaykovski',
+        category: 'Classic'
     },
     {
-        picture: 'img/15.png',
-        name: 'Apple iPad Mini',
-        price: '800 $',
-        category: 'ipad',
-        data: 800
+        picture: 'images/chaykovski.webp',
+        song: 'audio/classic/chajjkovskijj-lake-in-moonlight.mp3',
+        name: 'lake-in-moonlight',
+        singer: 'Chaykovski',
+        category: 'Classic'
     },
     {
-        picture: 'img/16.png',
-        name: 'Apple iPad Air 10.9',
-        price: '1000 $',
-        category: 'ipad',
-        data: 1000
+        picture: 'images/chaykovski.webp',
+        song: 'audio/classic/chajjkovskijj-pechalnaja-pesnja.mp3',
+        name: 'pechalnaja-pesnja',
+        singer: 'Chaykovski',
+        category: 'Classic'
     },
+    {
+        picture: 'images/chaykovski.webp',
+        song: 'audio/classic/chajjkovskijj-polka-dlja-tancev.mp3',
+        name: 'polka-dlja-tancev',
+        singer: 'Chaykovski',
+        category: 'Classic'
+    },
+    {
+        picture: 'images/chaykovski.webp',
+        song: 'audio/classic/chajjkovskijj-tanec-malenkikh-lebedejj.mp3',
+        name: 'tanec-malenkikh-lebedejj',
+        singer: 'Chaykovski',
+        category: 'Classic'
+    },
+    {
+        picture: 'images/chaykovski.webp',
+        song: 'audio/classic/chajjkovskijj-vals-cvetov (1).mp3',
+        name: 'vals-cvetov',
+        singer: 'Chaykovski',
+        category: 'Classic'
+    },
+    {
+        picture: 'images/chaykovski.webp',
+        song: 'audio/classic/chajjkovskijj-vremena-goda-osennjaja-pesnja.mp3',
+        name: 'vremena-goda-osennjaja-pesnja',
+        singer: 'Chaykovski',
+        category: 'Classic'
+    },
+    {
+        picture: 'images/luis.jpg',
+        song: 'audio/jazz/Louis Armstrong - Cabaret.mp3',
+        name: 'Cabaret',
+        singer: 'Luis Armstong',
+        category: 'Jazz'
+    },
+    {
+        picture: 'images/luis.jpg',
+        song: 'audio/jazz/Louis Armstrong - Go Down Moses.mp3',
+        name: 'Go Down Moses',
+        singer: 'Luis Armstong',
+        category: 'Jazz'
+    },
+    {
+        picture: 'images/luis.jpg',
+        song: 'audio/jazz/Louis Armstrong - Hello Dolly.mp3',
+        name: 'Hello Dolly',
+        singer: 'Luis Armstong',
+        category: 'Jazz'
+    },
+    {
+        picture: 'images/luis.jpg',
+        song: 'audio/jazz/Louis Armstrong - La Vie En Rose (OST ВАЛЛ·И).mp3',
+        name: 'La Vie En Rose (OST ВАЛЛ·И)',
+        singer: 'Luis Armstong',
+        category: 'Jazz'
+    },
+    {
+        picture: 'images/luis.jpg',
+        song: 'audio/jazz/Louis Armstrong - La Vie En Rose.mp3',
+        name: 'La Vie En Rose',
+        singer: 'Luis Armstong',
+        category: 'Jazz'
+    },
+    {
+        picture: 'images/luis.jpg',
+        song: 'audio/jazz/Louis Armstrong - Let My People Go.mp3',
+        name: 'Let My People Go',
+        singer: 'Luis Armstong',
+        category: 'Jazz'
+    },
+    {
+        picture: 'images/luis.jpg',
+        song: 'audio/jazz/Louis Armstrong - Remember Who You Are.mp3',
+        name: 'Remember Who You Are',
+        singer: 'Luis Armstong',
+        category: 'Jazz'
+    },
+    {
+        picture: 'images/luis.jpg',
+        song: 'audio/jazz/Louis Armstrong - What A Wonderful World.mp3',
+        name: 'What A Wonderful World',
+        singer: 'Luis Armstong',
+        category: 'Jazz'
+    },
+    {
+        picture: 'images/luis.jpg',
+        song: 'audio/jazz/Louis Armstrong - When Youre Smilling.mp3',
+        name: 'When Youre Smilling',
+        singer: 'Luis Armstong',
+        category: 'Jazz'
+    },
+    {
+        picture: 'images/tata.jpg',
+        song: 'audio/rabis/Tata Simonyan - Chi Kareli (2013).mp3',
+        name: 'Chi kareli',
+        singer: 'Tata Simonyan',
+        category: 'Rabis'
+    },
+    {
+        picture: 'images/tata.jpg',
+        song: 'audio/rabis/Tata Simonyan - Erku Arev (2014).mp3',
+        name: 'Erku Arev',
+        singer: 'Tata Simonyan',
+        category: 'Rabis'
+    },
+    {
+        picture: 'images/tata.jpg',
+        song: 'audio/rabis/Tata Simonyan - Es inchic e vor.mp3',
+        name: 'Es inchic e vor',
+        singer: 'Tata Simonyan',
+        category: 'Rabis'
+    },
+    {
+        picture: 'images/tata.jpg',
+        song: 'audio/rabis/Tata Simonyan - Jigyarov ser (2011).mp3',
+        name: 'Jigyarov ser',
+        singer: 'Tata Simonyan',
+        category: 'Rabis'
+    },
+    {
+        picture: 'images/tata.jpg',
+        song: 'audio/rabis/Tata Simonyan - Kgnam Heru-Heru (2016).mp3',
+        name: 'Kgnam Heru-Heru',
+        singer: 'Tata Simonyan',
+        category: 'Rabis'
+    },
+    {
+        picture: 'images/tata.jpg',
+        song: 'audio/rabis/Tata Simonyan - Qeznic heto (2011).mp3',
+        name: 'Qeznic heto',
+        singer: 'Tata Simonyan',
+        category: 'Rabis'
+    },
+    {
+        picture: 'images/tata.jpg',
+        song: 'audio/rabis/Tata Simonyan - Siro Avetis (2014).mp3',
+        name: 'Siro Avetis',
+        singer: 'Tata Simonyan',
+        category: 'Rabis'
+    },
+    {
+        picture: 'images/tata.jpg',
+        song: 'audio/rabis/Tata Simonyan - Tesel em (2011).mp3',
+        name: 'Tesel em',
+        singer: 'Tata Simonyan',
+        category: 'Rabis'
+    },
+    {
+        picture: 'images/tata.jpg',
+        song: 'audio/rabis/Tata Simonyan - Vardavar (2011).mp3',
+        name: 'Vardavar',
+        singer: 'Tata Simonyan',
+        category: 'Rabis'
+    },
+    {
+        picture: 'images/tata.jpg',
+        song: 'audio/rabis/Tata Simonyan ft Кристина Орбакайте - Mer siro ton@ (2013).mp3',
+        name: 'Mer siro ton@',
+        singer: 'Tata Simonyan',
+        category: 'Rabis'
+    },
+    {
+        picture: 'images/tupak.jpg',
+        song: 'audio/rap/2Pac - All Eyez On Me.mp3',
+        name: 'All Eyes On Me',
+        singer: '2Pac',
+        category: 'Rap'
+    },
+    {
+        picture: 'images/tupak.jpg',
+        song: 'audio/rap/2Pac - Breathin.mp3',
+        name: 'Breathin',
+        singer: '2Pac',
+        category: 'Rap'
+    },
+    {
+        picture: 'images/tupak.jpg',
+        song: 'audio/rap/2Pac - Changes.mp3',
+        name: 'Changes',
+        singer: '2Pac',
+        category: 'Rap'
+    },
+    {
+        picture: 'images/tupak.jpg',
+        song: 'audio/rap/2Pac - Hit Em Up.mp3',
+        name: 'Hit Em Up',
+        singer: '2Pac',
+        category: 'Rap'
+    },
+    {
+        picture: 'images/tupak.jpg',
+        song: 'audio/rap/2Pac - Listen To Your Heart.mp3',
+        name: 'Listen To Your Heart',
+        singer: '2Pac',
+        category: 'Rap'
+    },
+    {
+        picture: 'images/tupak.jpg',
+        song: 'audio/rap/2Pac - Open Fire.mp3',
+        name: 'Open Fire',
+        singer: '2Pac',
+        category: 'Rap'
+    },
+    {
+        picture: 'images/tupak.jpg',
+        song: 'audio/rap/2Pac - President.mp3',
+        name: 'President',
+        singer: '2Pac',
+        category: 'Rap'
+    },
+    {
+        picture: 'images/tupak.jpg',
+        song: 'audio/rap/2pac Feat. Dr. Dre - California Love.mp3',
+        name: 'California Love',
+        singer: '2Pac',
+        category: 'Rap'
+    }
 ]
 
-let contProduct = document.querySelector('.contProducts');
-
-function printProduct(prod) {
-    prod.forEach(item => {
-        let itemProduct = document.createElement('div');
-        contProduct.append(itemProduct);
-        itemProduct.className = 'itemProducts';
-        let content = document.createElement('div');
-        content.className = 'content';
-        let filter = document.createElement('div');
-        let imgProduct = document.createElement('img');
-        content.append(filter, imgProduct);
-        let prodText = document.createElement('div');
-        prodText.className = 'prodText'
-        itemProduct.append(content, prodText);
-        filter.className = 'filter';
-        let namePriceProd = document.createElement('div');
-        namePriceProd.className = 'name-price-prod';
-        let nameProduct = document.createElement('h2');
-        let priceProduct = document.createElement('h3');
-        namePriceProd.append(nameProduct, priceProduct);
-        let iconsAdd = document.createElement('div');
-        let cartPlus = document.createElement('i');
-        let heart = document.createElement('i');
-        iconsAdd.className = 'icons-add';
-        iconsAdd.append(cartPlus, heart);
-        cartPlus.className = 'fa fa-cart-plus addCart';
-        heart.className = 'fa fa-heart';
-        prodText.append(namePriceProd, iconsAdd);
-        imgProduct.src = item.picture;
-        nameProduct.textContent = item.name;
-        priceProduct.textContent = item.price;
-    })
+function audioPlay() {
+    songPlaying = true;
+    audio.play();
 }
 
-printProduct(products);
+function audioPause() {
+    songPlaying = false;
+    audio.pause();
+}
 
-let openBasket = document.querySelector('.openBasket');
-let basket = document.querySelector('.basket');
-let closeBasket = document.querySelector('.closeBasket');
-let addCart = document.querySelectorAll('.addCart');
-let contBasket = document.querySelector('.contBasket')
+undoSecond.onclick = () => {
+    audio.currentTime = audio.currentTime - 10;
+}
+
+undoFirst.onclick = () => {
+    audio.currentTime = audio.currentTime + 10;
+}
+
+songRange.addEventListener('input', function () {
+    audio.currentTime = this.value * audio.duration / 100;
+})
+
+audioVolume.addEventListener('input', function () {
+    audio.value = this.value / 100;
+    percent.innerText = this.value + '%';
+})
+
+audio.addEventListener('timeupdate', () => {
+    songRange.value = audio.currentTime * 100 / audio.duration;
+    let curmins = Math.floor(audio.currentTime / 60);
+    let cursec = Math.floor(audio.currentTime - curmins * 60);
+    let durmins = Math.floor(audio.duration / 60);
+    let dursec = Math.floor(audio.duration - durmins * 60);
+    if (curmins < 10) {
+        curmins = '0' + curmins
+    }
+    if (cursec < 10) {
+        cursec = '0' + cursec
+    }
+    if (durmins < 10) {
+        durmins = '0' + durmins
+    }
+    if (dursec < 10) {
+        dursec = '0' + dursec
+    }
+    if (audio.currentTime > 0.001) {
+        songTime.textContent = curmins + ':' + cursec;
+        songDuration.textContent = durmins + ':' + dursec;
+    }
+})
+
+function loadSong(songList) {
+    nameSong.innerText = songList.name;
+    nameSinger.innerText = songList.singer;
+    nameCategory.innerText = songList.category;
+    imgSinger.src = songList.picture;
+    audio.src = songList.song;
+    audioplayer.style = `background: url(${songList.picture}); background-size: cover; background-position: center;`;
+}
+
+let i = 0;
+loadSong(songList[i])
+
+function nextSong() {
+    i++;
+    if (i > songList.length - 1) {
+        i = 0
+    }
+    loadSong(songList[i]);
+    audioPlay();
+    playPause.className = 'fa fa-pause'
+}
+
+next.onclick = () => nextSong();
+
+function prevSong() {
+    i--;
+    if (i < 0) {
+        i = songList.length - 1
+    }
+    loadSong(songList[i]);
+    audioPlay();
+    playPause.className = 'fa fa-pause'
+}
+
+prev.onclick = () => prevSong();
 
 
-openBasket.onclick = () => {
-    if (!basket.classList.contains('showBasket')) {
-        basket.classList.add('showBasket');
-        openBasket.className = 'fa fa-close';
-        // document.body.style.overflow = 'hidden';
-        header.style.background = 'transparent';
+
+
+playPause.onclick = () => {
+    if (!songPlaying) {
+        audioPlay();
+        playPause.className = 'fa fa-pause'
     }
     else {
-        basket.classList.remove('showBasket');
-        openBasket.className = 'fa fa-shopping-bag';
-        // document.body.style.overflow = 'auto';
-        header.style.background = 'rgb(8, 8, 24)';
+        audioPause();
+        playPause.className = 'fa fa-play'
     }
 }
 
-// closeBasket.onclick = () => {
-//     basket.classList.remove('showBasket')
-// }
 
 
-let total = document.querySelector('.total');
-let count = document.querySelector('.count');
-let sum = 0;
-
-
-for (let i = 0; i < addCart.length; i++) {
-    addCart[i].onclick = () => {
-        addCart[i].style.pointerEvents = 'none';
-        addCart[i].style.color = 'rgb(119, 78, 119)';
-        let parent = addCart[i].parentElement.parentElement.parentElement;
-        let imgProd = parent.children[0].children[1].src;
-        let nameProd = parent.children[1].children[0].children[0].textContent;
-        let priceProd = parent.children[1].children[0].children[1].textContent;
-        let itemBasket = document.createElement('div');
-        contBasket.append(itemBasket);
-        let imgProducts = document.createElement('img');
-        let nameProducts = document.createElement('h2');
-        let priceProducts = document.createElement('h3');
-        let iconsDiv = document.createElement('div');
-        let increment = document.createElement('i');
-        let countBasket = document.createElement('p');
-        let decrement = document.createElement('i');
-        iconsDiv.append(decrement, countBasket, increment);
-        itemBasket.append(imgProducts, nameProducts, priceProducts, iconsDiv);
-        imgProducts.src = imgProd;
-        nameProducts.textContent = nameProd;
-        priceProducts.textContent = priceProd;
-        iconsDiv.id = 'iconsButton';
-        increment.className = 'fa fa-plus';
-        decrement.className = 'fa fa-trash trash';
-        countBasket.textContent = 1;
-        count.textContent++;
-        sum += parseInt(priceProd)
-        total.textContent = sum + '$';
-        increment.onclick = function () {
-            countBasket.textContent++;
-            decrement.className = 'fa fa-minus';
-            sum += parseInt(priceProd)
-            total.textContent = sum + '$';
-            decrement.onclick = function () {
-                sum -= parseInt(priceProd)
-                total.textContent = sum + '$';
-                countBasket.textContent--;
-                if (countBasket.textContent == 1) {
-                    decrement.className = 'fa fa-trash trash';
-                }
-                let trash = document.querySelectorAll('.trash');
-                trash.forEach(del => {
-                    del.onclick = function () {
-                        this.parentElement.parentElement.remove();
-                        sum -= parseInt(priceProd)
-                        total.textContent = sum + '$';
-                        count.textContent--;
-                        let itemProduct = document.querySelectorAll('.itemProduct');
-                        itemProduct.forEach(($, _) => {
-                            if (this.parentElement.parentElement.children[0].src == $.children[0].children[1].src) {
-                                $.children[1].children[1].children[0].style.color = 'transparent'
-                                $.children[1].children[1].children[0].style.pointerEvents = 'painted'
-                            }
-                        })
-                    }
-                })
-            }
-        }
-        let trash = document.querySelectorAll('.trash');
-        trash.forEach(del => {
-            del.onclick = function () {
-                this.parentElement.parentElement.remove();
-                sum -= parseInt(priceProd)
-                total.textContent = sum + '$';
-                count.textContent--;
-                let itemProduct = document.querySelectorAll('.itemProduct');
-                itemProduct.forEach(($, _) => {
-                    if (this.parentElement.parentElement.children[0].src == $.children[0].children[1].src) {
-                        $.children[1].children[1].children[0].style.color = 'transparent'
-                        $.children[1].children[1].children[0].style.pointerEvents = 'painted'
-                    }
-                })
+clickCategory.forEach(enterCategory => {
+    enterCategory.onclick = () => {
+        songs.innerHTML = ''
+        let filt = songList.filter(fil => {
+            if (enterCategory.getAttribute('data') == fil.category) {
+                return fil
             }
         })
-    }
-}
-
-
-
-
-
-
-
-
-let nameA = document.querySelector('.nameA');
-let Surname = document.querySelector('.Surname');
-let numberCart = document.querySelector('.number-cart');
-let monthYear = document.querySelector('.month-year');
-let cvv = document.querySelector('.cvv');
-let telnumber = document.querySelector('.telnumber');
-let tel = document.querySelectorAll('.tel');
-let nameImg = document.querySelector('.nameImg');
-let surnameImg = document.querySelector('.surnameImg');
-let cartImg = document.querySelector('.cartImg');
-let dateImg = document.querySelector('.dateImg');
-let cvvImg = document.querySelector('.cvvImg');
-let telImg = document.querySelector('.telImg');
-let payButton = document.querySelector('.payButton')
-
-
-
-
-
-
-// 0 => 96
-// 9 => 105
-
-
-// 0 verev => 48
-// 9 verev => 57
-
-numberCart.onkeydown = e => {
-    if (e.keyCode == 8) {
-        numberCart.value = numberCart.value.slice(0, -1)
-    }
-    if (e.key >= 0 && e.key <= 9) {
-        if (numberCart.value.length == 4 || numberCart.value.length == 9 || numberCart.value.length == 14) {
-            numberCart.value = numberCart.value + '-'
-        }
-    }
-    else {
-        return false
-    }
-}
-
-monthYear.onkeydown = e => {
-    if (e.keyCode == 8) {
-        monthYear.value = monthYear.value.slice(0, -1)
-    }
-    if (e.key >= 0 && e.key <= 9) {
-        if (monthYear.value.length == 2) {
-            monthYear.value = monthYear.value + '/'
-        }
-    }
-    else {
-        return false
-    }
-}
-
-cvv.onkeydown = e => {
-    if (e.keyCode == 8) {
-        cvv.value = cvv.value.slice(0, -1)
-    }
-    if (e.key >= 0 && e.key <= 9) {
-        cvv.value = cvv.value
-    }
-    else {
-        return false
-    }
-}
-
-
-telnumber.onkeydown = e => {
-    if (e.keyCode == 8) {
-        telnumber.value = telnumber.value.slice(0, -1)
-    }
-    if (e.key >= 0 && e.key <= 9) {
-        if (telnumber.value.length == 0) {
-            telnumber.value = '+' + telnumber.value
-        }
-    }
-    else {
-        return false
-    }
-}
-
-tel.forEach(num => {
-    num.onkeydown = e => {
-        if (e.keyCode == 8) {
-            num.value = num.value.slice(0, -1)
-        }
-        if (e.key >= 0 && e.key <= 9) {
-            num.value = num.value
-        }
-        else {
-            return false
-        }
+        filt.forEach(songFilt => {
+            let songsDiv = document.createElement('div');
+            songs.append(songsDiv);
+            let img = document.createElement('img');
+            let h2 = document.createElement('h2');
+            let h3 = document.createElement('h3');
+            songsDiv.append(img, h2, h3);
+            img.src = songFilt.picture;
+            h2.innerText = songFilt.singer;
+            h3.innerText = songFilt.name;
+            songsDiv.className = 'songsDiv';
+        })
+        let songsDiv = document.querySelectorAll('.songsDiv');
+        songsDiv.forEach((playSong, i) => {
+            playSong.onclick = () => {
+                loadSong(filt[i]);
+                audioPlay();
+                playPause.className = 'fa fa-pause'
+            }
+        })
     }
 })
 
 
-let validName = /^[A-Z]+$/
-let validNumber = /^\d{4}-\d{4}-\d{4}-\d{4}$/
-let validDate = /^\d{2}\/\d{2}$/
-let validCvv = /^\d{3}$/
-let validRegion = /\+\d{3}/
-let num = /^\d{2}$/i
+let speedI = document.querySelectorAll('.speed');
+
+buttonsSpeed.forEach((speed, i) => {
+    speed.onclick = function () {
+        audio.playbackRate = speedI[i].innerText;
+    }
+})
 
 
+let a;
+let set;
 
-payButton.onclick = () => {
-    nameA.value.match(validName) ? nameImg.style.opacity = '0' : nameImg.style.opacity = '1';
-    Surname.value.match(validName) ? surnameImg.style.opacity = '0' : surnameImg.style.opacity = '1';
-    numberCart.value.match(validNumber) ? cartImg.style.opacity = '0' : cartImg.style.opacity = '1';
-    monthYear.value.match(validDate) ? dateImg.style.opacity = '0' : dateImg.style.opacity = '1';
-    cvv.value.match(validCvv) ? cvvImg.style.opacity = '0' : cvvImg.style.opacity = '1';
-    telnumber.value.match(validRegion) ? telImg.style.opacity = '0' : telImg.style.opacity = '1';
-    tel.forEach(tel => {
-        tel.value.match(num) ? telImg.style.opacity = '0' : telImg.style.opacity = '1';
-    })
-
+startRepeat.onclick = () => {
+    a = audio.currentTime;
 }
 
+endRepeat.onclick = () => {
+    let b = audio.currentTime;
+    set = setInterval(() => {
+        if (audio.currentTime >= b) {
+            audio.currentTime = a;
+        }
+    },1000)
+}
 
-let money = document.querySelector('.money');
-money.textContent = Math.round(Math.random() * 50000) + '$';
-
-
-
-
-
-// ---------------------------------------------------------------------------------------------
+offRepeat.onclick = () => {
+    clearInterval(set);
+}
