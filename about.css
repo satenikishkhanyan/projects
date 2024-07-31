@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: rgb(3, 3, 37);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35%;
+    top: 0;
+    left: 0;
+    z-index: 111111111111111;
+    transition: 1s;
+}
+
+h1 {
+    color: transparent;
+    font-size: 60px;
+    -webkit-text-stroke: 1px white;
+    font-style: normal;
+    -webkit-box-reflect: below -20px linear-gradient(transparent, transparent, black);
+    background: linear-gradient(rgb(88, 16, 171), rgb(119, 78, 119), rgb(88, 16, 171));
+    -webkit-background-clip: text;
+}
+
+.icons {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icons i {
+    width: 50px;
+    height: 50px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(86, 32, 102);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+nav {
+    width: 60%;
+    height: 70px;
+    box-shadow: 0 0 20px rgb(119, 78, 119) inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100vw;
+    margin: 2% auto;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.menu a {
+    text-decoration: none;
+    -webkit-text-stroke: .2px white;
+    font-style: normal;
+    color: rgb(88, 16, 171);
+    -webkit-background-clip: text;
+    font-size: 23px;
+}
+
+.about {
+    width: 80%;
+    height: 200vh;
+    border: 1px solid;
+    border-radius: 20px;
+    background: rgb(181, 150, 181);
+    box-shadow: 0 0 15px 3px rgb(86, 32, 102) inset, 0 0 10px 2px rgb(117, 117, 117) inset, 0 0 10px 1px rgb(86, 32, 102);
+    padding: 0% 3%;
+}
+
+h2 {
+    font-size: 40px;
+    color: transparent;
+    font-style: normal;
+    background: linear-gradient(rgb(88, 16, 171), rgb(14, 13, 14), rgb(88, 16, 171));
+    -webkit-background-clip: text;
+    margin: 2% 5% 2%;
+}
+
+.infoP {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+}
+
+.founder {
+    width: 100%;
+    height: 33.3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    gap: 2%;
+    box-shadow: 0 0 15px 3px rgb(86, 32, 102) inset, 0 0 10px 2px rgb(117, 117, 117) inset, 0 0 10px 1px rgb(86, 32, 102);
+    border-radius: 10px;
+    padding: 3% 1%;
+    overflow: auto;
+}
+
+.founder::-webkit-scrollbar {
+    appearance: none;
+}
+
+.imgF {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+hr {
+    width: 95%;
+    height: 4px;
+    margin: 3% 0 0 3%;
+    box-shadow: 0 0 15px 3px rgb(99, 50, 114) inset, 0 0 10px 2px rgb(117, 117, 117) inset, 0 0 10px 1px rgb(86, 32, 102);
+    border: none;
+    border-radius: 25px;
+}
+
+.history {
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.slide-show {
+    width: 1500%;
+    height: 85%;
+    border: 1px solid blue;
+    margin: 3% 0 3% 0;
+    overflow: hidden;
+    display: flex;
+}
+
+.slide-show>img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
